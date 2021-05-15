@@ -1,8 +1,23 @@
+'''
+    Python Code to simulate two-block-one-wall system collision.
+    The first block has a fixed mass of 1 units, the wall has infinte mass 
+    and the mass of second block is of the form 100^(d-1) units.
+    All the collisions are elastic.  
+
+    This outputs the toal number of collisions that will take place 
+    when the second block is initiated towards the first block, where 
+    later is kept stationary in between the second block and the wall.
+
+    We observe from the results that the number of collisions is equal to
+    the first d digits of pi.
+'''
+
+
 class Wall:
     def __init__(self, x_c ):
         self.x_c = x_c
 
-
+'''Class for creating blocks with the method of updating their position after every collision'''
 class Block:
     def __init__(self, x_c, velocity, mass):
         self.x_c = x_c
@@ -11,9 +26,13 @@ class Block:
     
     def update_position(self, delta_time):
         self.x_c += self.velocity * delta_time
-        # print(self.x_c)
-    
 
+    
+'''
+    Class that simulates the entire setting.
+    Contains methods to initialise and complete the entire state of affairs.
+
+'''
 
 class Frame:
 
@@ -31,13 +50,12 @@ class Frame:
         temp_v1 = self.block1.velocity
         self.block1.velocity = (((self.block1.mass - self.block2.mass)*self.block1.velocity) + (2*(self.block2.mass)*self.block2.velocity))/(self.block1.mass + self.block2.mass)
         self.block2.velocity = (((self.block2.mass - self.block1.mass)*self.block2.velocity) + (2*(self.block1.mass)*temp_v1))/(self.block1.mass + self.block2.mass)
-        # print(self.block1.velocity , self.block2.velocity)
-
+     
 
 
     def update_velocity_b2w(self):
         self.block1.velocity *= -1   
-        # print(self.block1.velocity , self.block2.velocity)
+      
 
     def check_collision(self):
 
@@ -45,10 +63,10 @@ class Frame:
 
 
         while True:
+            '''finding the time for the next collision of the two blocks and the first block and the wall. '''
             distance = self.block2.x_c - self.block1.x_c
-            # print("distance: %d" distance)
             rel_velocity = self.block2.velocity - self.block1.velocity
-            # print('rel_velocity:' rel_velocity)
+            
             if distance == 0:
                 timeb2b = 1000
             else:
@@ -61,6 +79,8 @@ class Frame:
 
 
        
+            '''Considering all the possible cases of relative motion between two blocks and
+            the wall, hence considering all the collisions possible'''
 
             if self.block1.velocity > 0 and self.block2.velocity > 0 and self.block1.velocity > self.block2.velocity:
                 num_of_collisions += 1
@@ -114,12 +134,6 @@ class Frame:
                 block2.update_position(timeb2b)
                 self.update_velocity()
                 continue
-
-            # elif self.block1.velocity > 0 and self.block2.velocity == 0:
-            #     num_of_collisions +=1
-            #     block1.update_position(timeb2b)
-            #     block2.update_position(timeb2b)
-            #     self.update_velocity()
 
 
             elif self.checkEnded() == True:
