@@ -10,11 +10,11 @@ Repository to maintain simulation codes over a range of setting.
 
 ## Number of Collision
 ### Objects:
-  1. Block 1; mass = 1 unit
-  2. Block 2; mass = 100<sup>(d-1)</sup>
-  3. Wall; mass = inf
+  1. Block 1 - mass = 1 unit
+  2. Block 2 - mass = 100<sup>(d-1)</sup>
+  3. Wall - mass = inf
 
-<!-- ![alt tag] -->
+![alt tag](C:\Users\HP\swetak\[git]simulations\Simulations\utilities\collision_20.png))
 
 *Initial State* :  Block 1 remains at rest with no contact with the wall. Block 2 moves with velocity in the direction towards block 1. The first collision happens between the two blocks.<br />
 *State of affairs* : All the collisions are perfectly elastic. The subsequent collisions are goverened by the laws of linear momentum conservation, total energy conservation. <br />
