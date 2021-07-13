@@ -68,8 +68,8 @@ class Simulator:
     main:
     to analyse the nature of result, we perform the simulation
     large number of times(100 here) for the same house position and 
-    take the average of the individual results. It is obesrved that 
-    the average steps is qual to the sqaure of house position.
+    take the average of the individual results. It is observed that 
+    the average steps is equal to the square of house position.
 '''
 house_pos = [10, 50, 100, 200]
 for hpos in house_pos:
