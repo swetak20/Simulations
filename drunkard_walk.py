@@ -3,7 +3,7 @@ import subprocess
 
 subprocess.call(['clear'])
 
-'''class to execute a fair toss'''
+'''Class to execute a fair toss'''
 class Coin:
     def __init__(self):
         pass
@@ -17,7 +17,7 @@ class Coin:
             return "tails"
 
 
-'''drunkard to assign its position of house and x_coordinate'''
+'''Drunkard to assign its position of house and x_coordinate'''
 
 class Drunkard:
     def __init__(self, x_c, house_at):
@@ -34,6 +34,7 @@ class Drunkard:
     is determined on the basis of a fair toss with unifom 
     distribution.
 '''
+
 class Simulator:
     def __init__(self, drunkard :Drunkard, coin : Coin):
         self.drunkard = drunkard
@@ -65,8 +66,8 @@ class Simulator:
 
 
 '''
-    main:
-    to analyse the nature of result, we perform the simulation
+    Main:
+    To analyse the nature of result, we perform the simulation
     large number of times(100 here) for the same house position and 
     take the average of the individual results. It is observed that 
     the average steps is equal to the square of house position.
